@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./stylev.css">
+    <meta http-equiv="refresh" content="2; url=/" />
+    <title>Користувач</title>
+</head>
+<body>
+    <h1>Ви ввійшли як <span id="user-nick"></span></h1>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('/session')
+              .then(response => response.json())
+              .then(data => {
+                  if (data.user) {
+                     document.getElementById('user-nick').textContent = data.user.nick;
+                  }
+               });
+        });
+    </script>
+</body>
+</html>
